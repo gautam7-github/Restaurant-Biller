@@ -1,0 +1,23 @@
+                                 EATERIA LA GRANDE
+
+
+                     DATE & TIME : Mon Oct 19 20:31:04 2020
+
+
+
+                           FINAL INVOICE
+ORDER NUMBER : 8                                TAKEAWAY
+NAME : GAUTAM
+
+
+    ITEM NUMBER           ITEM NAME            QUANTITY  PRICE[1]        PRICE[TOTAL]
+              3     VEG. BURGER - NORMAL         3        30                  90
+              6        COCA COLA - 200mL         3        20                  60
+
+
+
+                  ----------------------
+                  | FINAL SALE PRICE  :   150 |
+                  | TAX VALUE IMPOSED :     7 | 
+                  | TOTAL SALE PRICE  :   157 | 
+                  ----------------------
