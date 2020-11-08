@@ -9,6 +9,57 @@
 #include "items.h"
 #include "mainDo.h"
 using namespace std;
+class admin
+{
+private:
+    mainDo RB;
+
+public:
+    admin()
+    {
+        cout << "YUPP" << endl;
+        system("pause");
+    }
+    void adminUserDo()
+    {
+        bool cont = RB.resetVals();
+        int retVal;
+        bool retVal_bool;
+        if (cont)
+        {
+            while (true)
+            {
+
+                RB.displayMenu();
+                retVal = RB.askforOrder();
+
+                if (retVal)
+                {
+                    exit(EXIT_SUCCESS);
+                }
+                else
+                {
+                    retVal_bool = RB.resetVals();
+                    if (retVal_bool)
+                        continue;
+                    else
+                        cout << "FATAL ERROR" << endl;
+                }
+            }
+        }
+    }
+};
+int main()
+{
+    srand(time(NULL));
+    class admin adminUser;
+    adminUser.adminUserDo();
+    return 0;
+}
+
+// DONT GO DOWN
+// HELL THIS WAY
+
 /*class items
 {
 public:
@@ -423,52 +474,3 @@ public:
         delete quantity;
     }
 };*/
-class admin
-{
-private:
-    mainDo RB;
-
-public:
-    admin()
-    {
-        cout << "YUPP" << endl;
-        items();
-        mainDo();
-        system("pause");
-    }
-    void adminUserDo()
-    {
-        bool cont = RB.resetVals();
-        int retVal;
-        bool retVal_bool;
-        if (cont)
-        {
-            while (true)
-            {
-
-                RB.displayMenu();
-                retVal = RB.askforOrder();
-
-                if (retVal)
-                {
-                    exit(EXIT_SUCCESS);
-                }
-                else
-                {
-                    retVal_bool = RB.resetVals();
-                    if (retVal_bool)
-                        continue;
-                    else
-                        cout << "FATAL ERROR" << endl;
-                }
-            }
-        }
-    }
-};
-int main()
-{
-    srand(time(NULL));
-    class admin adminUser;
-    adminUser.adminUserDo();
-    return 0;
-}

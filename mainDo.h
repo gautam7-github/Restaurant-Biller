@@ -4,8 +4,6 @@
 class mainDo : public items
 {
 private:
-    items I;
-
 public:
     mainDo();
     void displayBrand();

@@ -6,6 +6,7 @@
 #include <cmath>
 #include <cassert>
 #include <fstream>
+#include <vector>
 #include "items.h"
 using namespace std;
 
@@ -13,8 +14,8 @@ items::items()
 {
     finalSale = 0;
     order = 0;
-
-    dishes = new (nothrow) string[10];
+    total = 12;
+    dishes = new (nothrow) string[total];
     cout << "UP" << endl;
     dishes[0] = "NULL ITEM";
     price[0] = 0;
@@ -45,7 +46,14 @@ items::items()
 
     dishes[9] = "SPRITE - 500mL";
     price[9] = 50;
-    quantity = new (nothrow) unsigned int[10];
+
+    dishes[10] = "FRUIT JUICE - 300mL";
+    price[10] = 30;
+
+    dishes[11] = "FRUIT JUICE - 600mL";
+    price[11] = 60;
+
+    quantity = new (nothrow) unsigned int[total];
 
     if (!quantity)
     {
@@ -53,7 +61,7 @@ items::items()
         cout << endl;
         exit(1);
     }
-    for (int i = 1; i < 10; i++)
+    for (int i = 1; i < total; i++)
     {
         sprice[i] = 0;
     }

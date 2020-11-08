@@ -73,6 +73,10 @@ void mainDo::displayMenu()
     cout << "\t" << quantity[8] << endl;
     cout << "ITEM[9]\t\tSPRITE        - 500mL     \t\t" << price[9] << ".00";
     cout << "\t" << quantity[9] << endl;
+    cout << "ITEM[10]\tFRUIT JUICE   - 300mL     \t\t" << price[10] << ".00";
+    cout << "\t" << quantity[10] << endl;
+    cout << "ITEM[11]\tFRUIT JUICE   - 600mL     \t\t" << price[11] << ".00";
+    cout << "\t" << quantity[11] << endl;
 }
 int mainDo::askforOrder()
 {
@@ -210,8 +214,27 @@ int mainDo::askforOrder()
                 }
                 cout << "ITEM 9 : " << dishes[9] << " -> " << quantity[9] << endl;
                 break;
+            case 10:
+                cout << " QUANTITY : ";
+                cin >> quantity[0];
+                for (int counter = 1; counter <= quantity[0]; counter++)
+                {
+                    quantity[10]++;
+                }
+                cout << "ITEM 10 : " << dishes[10] << " -> " << quantity[10] << endl;
+                break;
+            case 11:
+                cout << " QUANTITY : ";
+                cin >> quantity[0];
+                for (int counter = 1; counter <= quantity[0]; counter++)
+                {
+                    quantity[11]++;
+                }
+                cout << "ITEM 11 : " << dishes[11] << " -> " << quantity[11] << endl;
+                break;
             default:
                 cout << "NOPE THAT's NOT A VALID ITEM....NOOB" << endl;
+                system("pause");
             }
         }
     }
@@ -226,7 +249,7 @@ void mainDo::finalBill()
     int i;
     displayFinalBill();
     cout << setw(15) << "ITEM NUMBER" << setw(20) << "ITEM NAME" << setw(20) << "QUANTITY" << setw(10) << "PRICE[1]" << setw(20) << "PRICE[TOTAL]" << endl;
-    for (i = 1; i <= 9; i++)
+    for (i = 1; i < total; i++)
     {
         if (quantity[i] > 0)
         {
@@ -235,7 +258,7 @@ void mainDo::finalBill()
             cout << setw(20) << sprice[i] << endl;
         }
     }
-    for (i = 1; i <= 9; i++)
+    for (i = 1; i < total; i++)
     {
         finalSale = sprice[i] + finalSale;
     }
@@ -283,7 +306,7 @@ void mainDo::writeBilltoFile()
             billfile << "NAME : " << customerName << endl;
             billfile << "\n\n";
             billfile << setw(15) << "ITEM NUMBER" << setw(20) << "ITEM NAME" << setw(20) << "QUANTITY" << setw(10) << "PRICE[1]" << setw(20) << "PRICE[TOTAL]" << endl;
-            for (int i = 1; i <= 9; i++)
+            for (int i = 1; i < total; i++)
             {
                 if (quantity[i] > 0)
                 {
@@ -330,13 +353,13 @@ void mainDo::writeBilltoFile()
 bool mainDo::resetVals()
 {
     int i;
-    for (i = 1; i < 10; i++)
+    for (i = 1; i < total; i++)
     {
         quantity[i] = 0;
     }
     finalSale = 0;
     order = 0;
-    for (i = 1; i < 10; i++)
+    for (i = 1; i < total; i++)
     {
         sprice[i] = 0;
     }
