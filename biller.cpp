@@ -6,8 +6,10 @@
 #include <cmath>
 #include <cassert>
 #include <fstream>
+#include "items.h"
+#include "mainDo.h"
 using namespace std;
-class items
+/*class items
 {
 public:
     unsigned int *quantity;
@@ -80,6 +82,7 @@ class mainDo : public items
 public:
     void displayBrand()
     {
+        system("cls");
         cout << setw(50);
         cout << "EATERIA LA GRANDE" << endl;
         cout << "\n\n";
@@ -111,23 +114,33 @@ public:
     }
     void displayMenu()
     {
-        cout << "ITEM[N]\t\t      ITEM NAME           \t\tPRICE\n";
+        displayBrand();
+        cout << "ITEM[N]\t\t      ITEM NAME           \t\tPRICE\tQUANTITY\n";
         cout << endl;
         cout << "\nSANDWICHES\n";
         cout << endl;
-        cout << "ITEM[1]\t\tVEG. SANDWICH - COLD      \t\t" << price[1] << ".00" << endl;
-        cout << "ITEM[2]\t\tVEG. SANDWICH - GRILLED   \t\t" << price[2] << ".00 " << endl;
+        cout << "ITEM[1]\t\tVEG. SANDWICH - COLD      \t\t" << price[1] << ".00";
+        cout << "\t" << quantity[1] << endl;
+        cout << "ITEM[2]\t\tVEG. SANDWICH - GRILLED   \t\t" << price[2] << ".00 ";
+        cout << "\t" << quantity[2] << endl;
         cout << "\nBURGERS\n";
         cout << endl;
-        cout << "ITEM[3]\t\tVEG. BURGER   - NORMAL    \t\t" << price[3] << ".00" << endl;
-        cout << "ITEM[4]\t\tVEG. BURGER   - SUPER     \t\t" << price[4] << ".00" << endl;
-        cout << "ITEM[5]\t\tVEG. BURGER   - ULTIMATE  \t\t" << price[5] << ".00" << endl;
+        cout << "ITEM[3]\t\tVEG. BURGER   - NORMAL    \t\t" << price[3] << ".00";
+        cout << "\t" << quantity[3] << endl;
+        cout << "ITEM[4]\t\tVEG. BURGER   - SUPER     \t\t" << price[4] << ".00";
+        cout << "\t" << quantity[4] << endl;
+        cout << "ITEM[5]\t\tVEG. BURGER   - ULTIMATE  \t\t" << price[5] << ".00";
+        cout << "\t" << quantity[5] << endl;
         cout << "\nBEVERAGES\n";
         cout << endl;
-        cout << "ITEM[6]\t\tCOCA COLA     - 200mL     \t\t" << price[6] << ".00" << endl;
-        cout << "ITEM[7]\t\tCOCA COLA     - 500mL     \t\t" << price[7] << ".00" << endl;
-        cout << "ITEM[8]\t\tSPRITE        - 200mL     \t\t" << price[8] << ".00" << endl;
-        cout << "ITEM[9]\t\tSPRITE        - 500mL     \t\t" << price[9] << ".00" << endl;
+        cout << "ITEM[6]\t\tCOCA COLA     - 200mL     \t\t" << price[6] << ".00";
+        cout << "\t" << quantity[6] << endl;
+        cout << "ITEM[7]\t\tCOCA COLA     - 500mL     \t\t" << price[7] << ".00";
+        cout << "\t" << quantity[7] << endl;
+        cout << "ITEM[8]\t\tSPRITE        - 200mL     \t\t" << price[8] << ".00";
+        cout << "\t" << quantity[8] << endl;
+        cout << "ITEM[9]\t\tSPRITE        - 500mL     \t\t" << price[9] << ".00";
+        cout << "\t" << quantity[9] << endl;
     }
     int askforOrder()
     {
@@ -140,9 +153,9 @@ public:
 
             while (true)
             {
+                displayMenu();
                 cout << "$$$$ -> ";
                 cin >> order;
-
                 switch (order)
                 {
                 case 0:
@@ -162,7 +175,14 @@ public:
                         cout << "##-> ";
                         cin >> TAKEAWAY;
                         if (TAKEAWAY == 1)
+                        {
+                            cout << "TAKEAWAY" << endl;
                             takeaway = true;
+                        }
+                        else
+                        {
+                            cout << "DINE IN" << endl;
+                        }
                         system("cls");
                         finalBill();
                         break;
@@ -231,6 +251,33 @@ public:
                     }
                     cout << "ITEM 6 : " << dishes[6] << " -> " << quantity[6] << endl;
                     break;
+                case 7:
+                    cout << " QUANTITY : ";
+                    cin >> quantity[0];
+                    for (int counter = 1; counter <= quantity[0]; counter++)
+                    {
+                        quantity[7]++;
+                    }
+                    cout << "ITEM 7 : " << dishes[7] << " -> " << quantity[7] << endl;
+                    break;
+                case 8:
+                    cout << " QUANTITY : ";
+                    cin >> quantity[0];
+                    for (int counter = 1; counter <= quantity[0]; counter++)
+                    {
+                        quantity[8]++;
+                    }
+                    cout << "ITEM 8 : " << dishes[8] << " -> " << quantity[8] << endl;
+                    break;
+                case 9:
+                    cout << " QUANTITY : ";
+                    cin >> quantity[0];
+                    for (int counter = 1; counter <= quantity[0]; counter++)
+                    {
+                        quantity[9]++;
+                    }
+                    cout << "ITEM 9 : " << dishes[9] << " -> " << quantity[9] << endl;
+                    break;
                 default:
                     cout << "NOPE THAT's NOT A VALID ITEM....NOOB" << endl;
                 }
@@ -280,14 +327,14 @@ public:
         try
         {
             fstream billfile;
-            billfile.open("mybill.txt");
+            billfile.open("mybill.txt", ios::out);
 
             //writing bill details to file
             if (billfile.is_open())
             {
                 billfile << setw(50);
-                billfile << "-----------------------------------------------";
-                billfile << "EATERIA LA GRANDE" << endl;
+                billfile << "-----------------------------------------------" << endl;
+                billfile << "\t\tEATERIA LA GRANDE" << endl;
                 billfile << "\n\n";
                 billfile << setw(35);
                 time_t now = time(0);
@@ -330,15 +377,17 @@ public:
                 billfile << setw(30);
                 billfile << "EATERIA LA GRANDE" << endl;
                 billfile << setw(30);
-                billfile << "FRENCH CUISINE AT IT'S BEST." << endl;
+                billfile << "FRENCH CUISINE AT IT'S BEST. 👌" << endl;
                 billfile << "-----------------------------------------------";
             }
             else
             {
                 throw "FILE ACCESS ERROR";
             }
-
             billfile.close();
+            cout << "PRESS 0 THEN 3 TO PROCEED..." << endl;
+            system("pause");
+            resetVals();
         }
         catch (const char *e)
         {
@@ -373,31 +422,45 @@ public:
         }
         delete quantity;
     }
-};
-class admin : public mainDo
+};*/
+class admin
 {
+private:
+    mainDo RB;
+
 public:
+    admin()
+    {
+        cout << "YUPP" << endl;
+        items();
+        mainDo();
+        system("pause");
+    }
     void adminUserDo()
     {
+        bool cont = RB.resetVals();
         int retVal;
         bool retVal_bool;
-        while (true)
+        if (cont)
         {
-            displayBrand();
-            displayMenu();
-            retVal = askforOrder();
+            while (true)
+            {
 
-            if (retVal)
-            {
-                exit(EXIT_SUCCESS);
-            }
-            else
-            {
-                retVal_bool = resetVals();
-                if (retVal_bool)
-                    continue;
+                RB.displayMenu();
+                retVal = RB.askforOrder();
+
+                if (retVal)
+                {
+                    exit(EXIT_SUCCESS);
+                }
                 else
-                    cout << "FATAL ERROR" << endl;
+                {
+                    retVal_bool = RB.resetVals();
+                    if (retVal_bool)
+                        continue;
+                    else
+                        cout << "FATAL ERROR" << endl;
+                }
             }
         }
     }

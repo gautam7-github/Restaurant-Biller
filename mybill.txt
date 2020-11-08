@@ -1,23 +1,32 @@
-                                 EATERIA LA GRANDE
+   -----------------------------------------------
+		EATERIA LA GRANDE
 
 
-                     DATE & TIME : Mon Oct 19 20:31:04 2020
+                     DATE & TIME : Sun Nov 08 13:39:26 2020
 
 
 
                            FINAL INVOICE
-ORDER NUMBER : 8                                TAKEAWAY
-NAME : GAUTAM
+ORDER NUMBER : 29                   ORDER TYPE : TAKEAWAY
+NAME : G
 
 
     ITEM NUMBER           ITEM NAME            QUANTITY  PRICE[1]        PRICE[TOTAL]
-              3     VEG. BURGER - NORMAL         3        30                  90
+              1     VEG. SANDWICH - COLD         3        30                  90
+              5   VEG. BURGER - ULTIMATE         2        55                 110
               6        COCA COLA - 200mL         3        20                  60
 
 
 
                   ----------------------
-                  | FINAL SALE PRICE  :   150 |
-                  | TAX VALUE IMPOSED :     7 | 
-                  | TOTAL SALE PRICE  :   157 | 
+                  | FINAL SALE PRICE  :   260 |
+                  | TAX VALUE IMPOSED :    13 | 
+                  | TOTAL SALE PRICE  :   273 | 
                   ----------------------
+
+
+
+    THANK YOU FOR VISITING US!
+             EATERIA LA GRANDE
+FRENCH CUISINE AT IT'S BEST. 👌
+-----------------------------------------------
