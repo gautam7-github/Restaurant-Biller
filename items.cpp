@@ -14,9 +14,13 @@ items::items()
 {
     finalSale = 0;
     order = 0;
-    total = 12;
+    // change this if dishes increased/decreased
+    total = 11;
+    // write total items + 1
+    total = total + 1;
+    // ---------------------
+
     dishes = new (nothrow) string[total];
-    cout << "UP" << endl;
     dishes[0] = "NULL ITEM";
     price[0] = 0;
 

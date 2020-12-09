@@ -1,16 +1,19 @@
+// ----------------
 #include <iostream>
 #include <iomanip>
+#include <cassert>
 #include <ctime>
 #include <string>
 #include <cstdlib>
+#include <windows.h>
 #include <cmath>
-#include <cassert>
 #include <fstream>
+// ----------------
 #include "mainDo.h"
 using namespace std;
+// ----------------
 mainDo::mainDo()
 {
-    cout << "UPP" << endl;
 }
 void mainDo::displayBrand()
 {
@@ -119,6 +122,7 @@ int mainDo::askforOrder()
                     {
                         cout << "DINE IN" << endl;
                     }
+                    Sleep(1000);
                     system("cls");
                     finalBill();
                     break;

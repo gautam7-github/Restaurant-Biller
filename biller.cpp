@@ -12,17 +12,12 @@ using namespace std;
 class admin
 {
 private:
-    mainDo RB;
+    mainDo RestaurantBiller;
 
 public:
-    admin()
-    {
-        cout << "YUPP" << endl;
-        system("pause");
-    }
     void adminUserDo()
     {
-        bool cont = RB.resetVals();
+        bool cont = RestaurantBiller.resetVals();
         int retVal;
         bool retVal_bool;
         if (cont)
@@ -30,8 +25,8 @@ public:
             while (true)
             {
 
-                RB.displayMenu();
-                retVal = RB.askforOrder();
+                RestaurantBiller.displayMenu();
+                retVal = RestaurantBiller.askforOrder();
 
                 if (retVal)
                 {
@@ -39,7 +34,7 @@ public:
                 }
                 else
                 {
-                    retVal_bool = RB.resetVals();
+                    retVal_bool = RestaurantBiller.resetVals();
                     if (retVal_bool)
                         continue;
                     else

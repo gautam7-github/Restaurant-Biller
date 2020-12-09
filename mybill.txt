@@ -2,27 +2,26 @@
 		EATERIA LA GRANDE
 
 
-                     DATE & TIME : Sun Nov 08 15:24:39 2020
+                     DATE & TIME : Wed Dec 09 20:37:10 2020
 
 
 
                            FINAL INVOICE
-ORDER NUMBER : 11                   ORDER TYPE : TAKEAWAY
-NAME : G
+ORDER NUMBER : 14                   ORDER TYPE : TAKEAWAY
+NAME : gauti
 
 
     ITEM NUMBER           ITEM NAME            QUANTITY  PRICE[1]        PRICE[TOTAL]
-              6        COCA COLA - 200mL         4        20                  80
-              9           SPRITE - 500mL         3        50                 150
-             10      FRUIT JUICE - 300mL         3        30                  90
-             11      FRUIT JUICE - 600mL         1        60                  60
+              1     VEG. SANDWICH - COLD         3        30                  90
+              2  VEG. SANDWICH - GRILLED         4        40                 160
+              6        COCA COLA - 200mL         5        20                 100
 
 
 
                   ----------------------
-                  | FINAL SALE PRICE  :   380 |
-                  | TAX VALUE IMPOSED :    19 | 
-                  | TOTAL SALE PRICE  :   399 | 
+                  | FINAL SALE PRICE  :   350 |
+                  | TAX VALUE IMPOSED :    17 | 
+                  | TOTAL SALE PRICE  :   367 | 
                   ----------------------
 
 
