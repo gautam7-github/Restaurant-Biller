@@ -14,7 +14,8 @@ public:
     bool takeaway;
     std::string customerName;
     unsigned int finalSale;
-
+    unsigned int salePrice;
+    unsigned int taxVal;
     items();
 };
 #endif // ITEM_HEADER

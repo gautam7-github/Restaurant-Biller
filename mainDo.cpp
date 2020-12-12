@@ -1,5 +1,6 @@
 // ----------------
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 #include <cassert>
 #include <ctime>
@@ -7,7 +8,6 @@
 #include <cstdlib>
 #include <windows.h>
 #include <cmath>
-#include <fstream>
 // ----------------
 #include "mainDo.h"
 using namespace std;
@@ -80,6 +80,8 @@ void mainDo::displayMenu()
     cout << "\t" << quantity[10] << endl;
     cout << "ITEM[11]\tFRUIT JUICE   - 600mL     \t\t" << price[11] << ".00";
     cout << "\t" << quantity[11] << endl;
+    cout << "ITEM[12]\tMINERAL WATER - 1L        \t\t" << price[12] << ".00";
+    cout << "\t" << quantity[12] << endl;
 }
 int mainDo::askforOrder()
 {
@@ -93,7 +95,7 @@ int mainDo::askforOrder()
         while (true)
         {
             displayMenu();
-            cout << "$$$$ -> ";
+            cout << "$$" << customerName << "$$ -> ";
             cin >> order;
             switch (order)
             {
@@ -133,7 +135,7 @@ int mainDo::askforOrder()
                     return 0;
                     break;
                 default:
-                    cout << "NOPE NOT VALID NUMBER....NOOB" << endl;
+                    cout << "TRY AGAIN" << endl;
                     break;
                 }
                 break;
@@ -208,6 +210,7 @@ int mainDo::askforOrder()
                     quantity[8]++;
                 }
                 cout << "ITEM 8 : " << dishes[8] << " -> " << quantity[8] << endl;
+                Sleep(500);
                 break;
             case 9:
                 cout << " QUANTITY : ";
@@ -217,15 +220,21 @@ int mainDo::askforOrder()
                     quantity[9]++;
                 }
                 cout << "ITEM 9 : " << dishes[9] << " -> " << quantity[9] << endl;
+                Sleep(500);
                 break;
             case 10:
                 cout << " QUANTITY : ";
                 cin >> quantity[0];
-                for (int counter = 1; counter <= quantity[0]; counter++)
+                if (quantity[0] > 0)
                 {
-                    quantity[10]++;
+                    quantity[10] = quantity[0];
+                }
+                else if (quantity[0] == 0 && quantity[10] > 0)
+                {
+                    quantity[10] = 0;
                 }
                 cout << "ITEM 10 : " << dishes[10] << " -> " << quantity[10] << endl;
+                Sleep(500);
                 break;
             case 11:
                 cout << " QUANTITY : ";
@@ -235,6 +244,17 @@ int mainDo::askforOrder()
                     quantity[11]++;
                 }
                 cout << "ITEM 11 : " << dishes[11] << " -> " << quantity[11] << endl;
+                Sleep(500);
+                break;
+            case 12:
+                cout << " QUANTITY : ";
+                cin >> quantity[0];
+                for (int counter = 1; counter <= quantity[0]; counter++)
+                {
+                    quantity[12]++;
+                }
+                cout << "ITEM 12 : " << dishes[12] << " -> " << quantity[12] << endl;
+                Sleep(500);
                 break;
             default:
                 cout << "NOPE THAT's NOT A VALID ITEM....NOOB" << endl;
@@ -286,10 +306,12 @@ void mainDo::writeBilltoFile()
     try
     {
         fstream billfile;
+        fstream salefile;
         billfile.open("mybill.txt", ios::out);
+        salefile.open("saleRecord.csv", ios::out);
 
         //writing bill details to file
-        if (billfile.is_open())
+        if (billfile.is_open() && salefile.is_open())
         {
             billfile << setw(50);
             billfile << "-----------------------------------------------" << endl;
@@ -298,7 +320,7 @@ void mainDo::writeBilltoFile()
             billfile << setw(35);
             time_t now = time(0);
             char *dt = ctime(&now);
-
+            salefile << dt << ", SALES" << endl;
             billfile << "DATE & TIME : " << dt << endl;
             billfile << "\n\n";
             billfile << setw(40);
@@ -317,6 +339,7 @@ void mainDo::writeBilltoFile()
                     sprice[i] = price[i] * quantity[i];
                     billfile << setw(15) << i << setw(25) << dishes[i] << setw(10) << quantity[i] << setw(10) << price[i];
                     billfile << setw(20) << sprice[i] << endl;
+                    salefile << i << "-" << dishes[i] << "," << quantity[i] << "," << sprice[i] << endl;
                 }
             }
             billfile << "\n\n\n";
@@ -325,9 +348,12 @@ void mainDo::writeBilltoFile()
             billfile << setw(40);
             billfile << "| FINAL SALE PRICE  : " << setw(5) << finalSale << " |" << endl;
             billfile << setw(40);
-            billfile << "| TAX VALUE IMPOSED : " << setw(5) << floor(finalSale * 0.05) << " | " << endl;
+            taxVal = floor(finalSale * 0.05);
+            billfile << "| TAX VALUE IMPOSED : " << setw(5) << taxVal << " | " << endl;
             billfile << setw(40);
-            billfile << "| TOTAL SALE PRICE  : " << setw(5) << finalSale + floor(finalSale * 0.05) << " | " << endl;
+            salePrice = finalSale + taxVal;
+            billfile << "| TOTAL SALE PRICE  : " << setw(5) << salePrice << " | " << endl;
+            salefile << finalSale << "," << taxVal << endl;
             billfile << setw(40);
             billfile << "----------------------" << endl;
             billfile << "\n\n\n";

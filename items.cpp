@@ -13,9 +13,11 @@ using namespace std;
 items::items()
 {
     finalSale = 0;
+    salePrice = 0;
+    taxVal = 0;
     order = 0;
     // change this if dishes increased/decreased
-    total = 11;
+    total = 12;
     // write total items + 1
     total = total + 1;
     // ---------------------
@@ -57,17 +59,25 @@ items::items()
     dishes[11] = "FRUIT JUICE - 600mL";
     price[11] = 60;
 
-    quantity = new (nothrow) unsigned int[total];
+    dishes[12] = "MINERAL WATER - 1L";
+    price[12] = 25;
 
-    if (!quantity)
+    quantity = new (nothrow) unsigned int[total];
+    try
     {
-        cout << "FATAL ERROR\n";
-        cout << endl;
-        exit(1);
+        if (!quantity)
+        {
+            throw "FATAL ERROR";
+        }
+    }
+    catch (const char *E)
+    {
+        cout << E;
     }
     for (int i = 1; i < total; i++)
     {
         sprice[i] = 0;
     }
+    // default is dine - in
     takeaway = false;
 };

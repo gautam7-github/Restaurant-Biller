@@ -2,26 +2,26 @@
 		EATERIA LA GRANDE
 
 
-                     DATE & TIME : Wed Dec 09 20:37:10 2020
+                     DATE & TIME : Sat Dec 12 20:54:58 2020
 
 
 
                            FINAL INVOICE
-ORDER NUMBER : 14                   ORDER TYPE : TAKEAWAY
-NAME : gauti
+ORDER NUMBER : 2                   ORDER TYPE : TAKEAWAY
+NAME : gautam
 
 
     ITEM NUMBER           ITEM NAME            QUANTITY  PRICE[1]        PRICE[TOTAL]
-              1     VEG. SANDWICH - COLD         3        30                  90
               2  VEG. SANDWICH - GRILLED         4        40                 160
-              6        COCA COLA - 200mL         5        20                 100
+             10      FRUIT JUICE - 300mL         4        30                 120
+             12       MINERAL WATER - 1L         1        25                  25
 
 
 
                   ----------------------
-                  | FINAL SALE PRICE  :   350 |
-                  | TAX VALUE IMPOSED :    17 | 
-                  | TOTAL SALE PRICE  :   367 | 
+                  | FINAL SALE PRICE  :   305 |
+                  | TAX VALUE IMPOSED :    15 | 
+                  | TOTAL SALE PRICE  :   320 | 
                   ----------------------
 
 
